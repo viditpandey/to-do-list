@@ -5,14 +5,14 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
-const RenderItems = ({items, updateItems}) => items.map((i, index, allItems) => <ListItem button key={i.date}>
+const RenderItems = ({items, updateItems}) => items.map((i, index, allItems) => <ListItem button key={`${i.text}_${i.date}`}>
 
   <ListItemText
     primary={i.text}
     secondary={`${i.date}`} />
 
   <Avatar
-    onClick={e => updateItems(allItems.filter(a => a.text !== i && a.date !== i.date))}>
+    onClick={e => updateItems(allItems.filter(a => a.text !== i.text || a.date !== i.date))}>
     <DeleteIcon />
   </Avatar>
 
