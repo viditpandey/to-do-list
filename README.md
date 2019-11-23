@@ -3,8 +3,7 @@ built upon latest versions of react-starter project and using @metrial-ui librar
 To get started, 
 1) clone the repo
 2) do "npm install"
-3) in terminal you can choose to
-  3.1) either build dist file by running "npm run create"
-  --OR--
-  3.2) run webpack server using "npm start"
+3) in terminal you can run client and server using 2 terminals:
+  3.1) npm run client
+  2.3) npm run server
 
