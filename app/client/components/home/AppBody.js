@@ -19,7 +19,7 @@ function AppBody (props) {
 
   useEffect(() => {
     fetchUserList(selectedTab)
-    .then(data => updateItems(data))
+    .then(response => updateItems(response.data))
   }, [selectedTab])
 
   return (

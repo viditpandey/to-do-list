@@ -26,6 +26,7 @@ function AppTitleBar (props) {
             <MenuIcon />
           </IconButton>
           <div className={classes.flex}>to-do's</div>
+          <a href='http://localhost:5001/logout'>logout</a>
           <SearchIcon />
         </Toolbar>
       </AppBar>
