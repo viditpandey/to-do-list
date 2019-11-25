@@ -7,3 +7,8 @@ To get started,
   3.1) npm run client
   2.3) npm run server
 
+
+-> to do: 
+1) set up db connection (MongoDB? to persist users)
+2) set up react router for client
+3) connect backend and frontend.
