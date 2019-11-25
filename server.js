@@ -7,7 +7,9 @@ const app = express()
 app.get('/api/list/:listId', cors(), (req, res) => {
   const data = [
     {text: `Snacks for ${req.params.listId}`, date: new Date()},
-    {text: 'buy milk cartons', date: new Date()}
+    {text: 'set up react router', date: new Date()},
+    {text: 'set up DB connection for this app.', date: new Date()},
+    {text: 'connect server and client.', date: new Date()}
   ]
   return res.json(data)
 })
