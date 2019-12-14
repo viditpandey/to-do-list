@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build-client": "webpack --mode development",
     "client": "webpack-dev-server --open",
     "server": "nodemon server.js"
   },
