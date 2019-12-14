@@ -13,7 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-client": "webpack --mode development",
     "client": "webpack-dev-server --open",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "start": "webpack --mode production && nodemon server.js"
   },
   "author": "",
   "license": "ISC",
