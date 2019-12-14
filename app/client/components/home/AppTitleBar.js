@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-// import SearchIcon from '@material-ui/icons/Search'
+import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 
@@ -19,15 +19,14 @@ const styles = {
 function AppTitleBar (props) {
   const { classes } = props
   return (
-    <div className={classes.root}>
-      <AppBar position='static' color='primary'>
+    <div className={classes.root} style={{background: 'red'}}>
+      <AppBar position='static' color='default'>
         <Toolbar>
           <IconButton className={classes.menuButton} color='inherit' aria-label='Menu'>
             <MenuIcon />
           </IconButton>
-          <div className={classes.flex}>to-do's</div>
-          <a href='/logout'>logout</a>
-          {/* <SearchIcon /> */}
+          <div className={classes.flex}>TO-DO's</div>
+          <Button onClick={() => { window.location = '/logout' }} color='inherit'>Logout</Button>
         </Toolbar>
       </AppBar>
     </div>

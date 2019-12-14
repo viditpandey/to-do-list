@@ -37,10 +37,10 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-// Routes
+// API Routes
 app.get('/api/list/:listId', (req, res, next) => { console.log(`reading for list ${req.params.listId}`); next() }, (req, res) => res.json({data: data(req.params.listId)}))
 
-// final
+// view Routes
 app.get('/home', checkAuthenticated, (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')))
 
 app.get('/', checkAuthenticated, (req, res) => res.redirect('/home'))

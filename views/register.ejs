@@ -1,17 +1,31 @@
-<h2>Register</h2>
-<form action="/register" method="POST">
-    <div>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name" />
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" />
-    </div>
-    <div>
-        <label for="password">password</label>
-        <input type="password" id="password" name="password" />
-    </div>
-    <button type="submit">Submit</button>
-</form>
-<a href="/login">Login</a>
+
+<div style="align-items: center;
+            border: 5px yellowgreen solid;
+            background: cornsilk;
+            padding: 130px;
+            max-width: min-content;
+            margin: auto;">
+    <h2>Register</h2>
+    <hr/>
+    <form action="/register" method="POST">
+        <p>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+        </p>
+        <hr/>
+        <p>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" />
+        </p>
+        <hr/>
+        <p>
+            <label for="password">password</label>
+            <input type="password" id="password" name="password" />
+        </p>
+        <hr/>
+        <button style="width: 48%; margin-left: 0px;" type="submit">Submit</button>
+        <button style="width: 48%; margin-right: 0px;"><a href="/login">Login</a></button>
+        <hr/>
+
+    </form>
+</div>
