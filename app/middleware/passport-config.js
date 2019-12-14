@@ -19,4 +19,19 @@ function initialize (passport, getUserByEmail, getUserById) {
   passport.deserializeUser((id, done) => done(null, getUserById(id)))
 }
 
-module.exports = initialize
+function checkAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) return next()
+  else res.redirect('/login')
+}
+
+function allowIfNotAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) return res.redirect('/')
+  else next()
+}
+
+function createHash (password) { return crypto.createHash('sha256').update(password).digest('hex') }
+
+module.exports.initializePassport = initialize
+module.exports.checkAuthenticated = checkAuthenticated
+module.exports.allowIfNotAuthenticated = allowIfNotAuthenticated
+module.exports.createHash = createHash
