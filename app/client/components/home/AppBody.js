@@ -7,7 +7,7 @@ import MainTabs from '../MainTabs'
 const TabItems = ['Personal', 'Work']
 
 const fetchUserList = (selectedTab) => {
-  return fetch(`http://localhost:5001/api/list/${TabItems[selectedTab]}`)
+  return fetch(`/api/list/${TabItems[selectedTab]}`)
   .then(res => res.json())
   .then(res => res)
   .catch(() => [])
