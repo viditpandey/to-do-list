@@ -8,11 +8,10 @@ const cors = require('cors')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
+const toDoListRoutes = require('./app/server/to-do-subapp-management/routes')
+// const mongodb = require('mongodb')
+// const connStr = 'mongodb://127.0.0.1:27017/local'
 const users = []
-const data = (listId) => ([
-  {text: `Snacks for ${listId}`, date: new Date()},
-  {text: 'buy milk cartons', date: new Date()}
-])
 
 initializePassport(
   passport,
@@ -37,8 +36,8 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-// API Routes
-app.get('/api/list/:listId', (req, res, next) => { console.log(`reading for list ${req.params.listId}`); next() }, (req, res) => res.json({data: data(req.params.listId)}))
+// API sub app Routes
+app.use(`/api/`, toDoListRoutes)
 
 // view Routes
 app.get('/home', checkAuthenticated, (req, res) => res.sendFile(path.resolve(__dirname, './dist/index.html')))
