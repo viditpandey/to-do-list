@@ -9,6 +9,7 @@ import TextField from '@material-ui/core/TextField'
 
 const addItemToList = (item={}) => {
   return fetch(`/api/list/${item.listId}`, {
+    headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     body: JSON.stringify(item)
   })
