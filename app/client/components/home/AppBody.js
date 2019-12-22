@@ -6,7 +6,7 @@ import MainTabs from '../MainTabs'
 
 const TabItems = ['Personal', 'Work']
 
-const fetchUserList = (selectedTab) => {
+const fetchUserListItems = (selectedTab) => {
   return fetch(`/api/list/${TabItems[selectedTab]}`)
   .then(res => res.json())
   .then(res => res)
@@ -18,7 +18,7 @@ function AppBody (props) {
   const [items, updateItems] = useState([])
 
   useEffect(() => {
-    fetchUserList(selectedTab)
+    fetchUserListItems(selectedTab)
     .then(response => updateItems(response.data))
   }, [selectedTab])
 
@@ -31,7 +31,7 @@ function AppBody (props) {
 
       <div style={{'margin': '15px'}} />
 
-      <Additem items={items} updateItems={updateItems} />
+      <Additem items={items} updateItems={updateItems} listId={TabItems[selectedTab]} />
 
       <ListItems items={items} updateItems={updateItems} />
 

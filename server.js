@@ -8,10 +8,10 @@ const cors = require('cors')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
+const bodyParser = require('body-parser')
 const toDoListRoutes = require('./app/server/to-do-subapp-management/routes')
-// const mongodb = require('mongodb')
-// const connStr = 'mongodb://127.0.0.1:27017/local'
 const users = []
+const dbConfig = require('./app/server/db_config/dbConfig')
 
 initializePassport(
   passport,
@@ -23,11 +23,13 @@ initializePassport(
 const app = express()
 
 // set up basic configs
+dbConfig.connect()
 app.set('view-engine', 'ejs')
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, './dist')))
-app.use(express.urlencoded({ extended: false })) // to be able to use form elements (from /login or /register) in req obj
 app.use(flash())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(session({
   secret: process.env.session_secret || 'to-do-login-secret',
   resave: false,

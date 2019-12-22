@@ -5,7 +5,7 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
-const RenderItems = ({items, updateItems}) => items.map((i, index, allItems) => <ListItem button key={`${i.text}_${i.date}`}>
+const RenderItems = ({items, updateItems}) => items.map((i, index, allItems) => <ListItem button key={`${index}_${i.text}_${i.date}`}>
 
   <ListItemText
     primary={i.text}

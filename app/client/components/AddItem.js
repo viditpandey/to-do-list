@@ -7,28 +7,45 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 
-const AddItem = ({updateItems, items}) => {
+const addItemToList = (item={}) => {
+  return fetch(`/api/list/${item.listId}`, {
+    method: 'POST',
+    body: JSON.stringify(item)
+  })
+  .then(res => res.json())
+  .then(res => res)
+  .catch(() => [])
+}
+
+const AddItem = ({updateItems, items, listId}) => {
+
   const [item, setItem] = useState('')
+
   const handleAddItem = (e) => {
-    if (item.trim() !== '') {
+    if (item && item.trim() !== '') {
+      // save to db
+      const createdItem = {text: item.toString(), listId}
+      addItemToList(createdItem)
       items.push({text: item, date: new Date()})
       updateItems([...items])
       setItem('')
     }
   }
+
   return (
     <Paper style={{'backgroundColor': 'lightskyblue'}}>
 
       <List>
         <ListItem button>
           <ListItemText>
-
+            <form onSubmit={(e) => {e.preventDefault(); handleAddItem(e)}}>
             <TextField
               autoFocus
               value={item}
+
               onChange={e => setItem(e.target.value)}
               label='item' />
-
+            </form>
           </ListItemText>
 
           <Avatar onClick={handleAddItem}>
