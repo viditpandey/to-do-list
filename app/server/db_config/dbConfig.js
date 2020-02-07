@@ -1,7 +1,7 @@
 // import mongodb from 'mongodb'
 const assert = require('assert');
 
-const mongodb = require('mongodb')
+const mongodb = require('mongodb').MongoClient
 const defaultConnStr = 'mongodb://127.0.0.1:27017/local'
 
 const dbConfig = {

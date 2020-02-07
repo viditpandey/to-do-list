@@ -4,5 +4,6 @@ const RouteHandler = require('./routeHandler')
 app.route('/list/:listId')
     .get(RouteHandler.getListItems)
     .post(RouteHandler.addListItems)
+    .delete(RouteHandler.removeListItems)
 
 module.exports = app

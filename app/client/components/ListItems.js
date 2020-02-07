@@ -5,6 +5,28 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
+const removeListItems = (item={}) => {
+  return fetch(`/api/list/${item.listId}`, {
+    headers: { 'Content-Type': 'application/json' },
+    method: 'DELETE',
+    body: JSON.stringify(item)
+  })
+  .then(res => res.json())
+  .then(res => res)
+  .catch(() => [])
+}
+
+const handleDeleteClick = ({updateItemMethod, allItems, item}) => {
+  const updatedList = []
+  let deletedItem
+  allItems.forEach(a => {
+    if (a.text === item.text && a.date === item.date) deletedItem = item
+    else updatedList.push(a)
+  })
+  removeListItems(deletedItem)
+  updateItemMethod(updatedList)
+}
+
 const RenderItems = ({items, updateItems}) => items.map((i, index, allItems) => <ListItem button key={`${index}_${i.text}_${i.date}`}>
 
   <ListItemText
@@ -12,7 +34,7 @@ const RenderItems = ({items, updateItems}) => items.map((i, index, allItems) => 
     secondary={`${i.date}`} />
 
   <Avatar
-    onClick={e => updateItems(allItems.filter(a => a.text !== i.text || a.date !== i.date))}>
+    onClick={e => handleDeleteClick({allItems, updateItemMethod: updateItems, item: i})}>
     <DeleteIcon />
   </Avatar>
 

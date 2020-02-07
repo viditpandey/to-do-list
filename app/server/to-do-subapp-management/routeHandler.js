@@ -1,4 +1,5 @@
 const dbConfig = require('../db_config/dbConfig')
+const mongodbObjId = require('mongodb').ObjectID
 // const data = (listId) => ([
 //     {text: `Snacks for ${listId}`, date: new Date(), listId},
 //     {text: 'buy milk cartons', date: new Date(), listId}
@@ -25,10 +26,25 @@ const RouteHandler = {
             text: req.body.text,
             date: new Date()
         }
-        console.log(req.body, 'req.body')
         db.collection('to-do-list').insertOne(createdItem, function (error, done) {
             if (error) res.status(501).json({error: error})
             else res.status(201).json({data: createdItem})
+        })
+    },
+
+    removeListItems: (req, res, next) => {
+        const db = dbConfig.getClient()
+        console.log(`deleting item from list ${req.params.listId}`)
+        const deletedItem = {
+            // listId: req.body.listId,
+            // text: req.body.text,
+            // date: req.body.date,
+            _id: mongodbObjId(req.body._id)
+        }
+        console.log(deletedItem)
+        db.collection('to-do-list').deleteOne(deletedItem, function (error, done) {
+            if (error) res.status(501).json({error: error})
+            else res.status(202).end()
         })
     }
 }
