@@ -6,9 +6,10 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
+import { DEFAULT_BACKEND_URI } from '../constants/constants'
 
 const addItemToList = (item={}) => {
-  return fetch(`/api/list/${item.listId}`, {
+  return fetch(`${DEFAULT_BACKEND_URI}/api/list/${item.listId}`, {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     body: JSON.stringify(item)
@@ -25,7 +26,7 @@ const AddItem = ({updateItems, items, listId}) => {
   const handleAddItem = (e) => {
     if (item && item.trim() !== '') {
       // save to db
-      const createdItem = {text: item.toString(), listId}
+      const createdItem = {text: item.toString(), listId: listId.toLowerCase()}
       addItemToList(createdItem)
       items.push({text: item, date: new Date()})
       updateItems([...items])

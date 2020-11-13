@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react'
 import Additem from '../AddItem'
 import ListItems from '../ListItems'
 import MainTabs from '../MainTabs'
+import { DEFAULT_BACKEND_URI } from '../../constants/constants'
 
 const TabItems = ['Personal', 'Work']
 
 const fetchUserListItems = (selectedTab) => {
-  return fetch(`/api/list/${TabItems[selectedTab]}`)
+  return fetch(`${DEFAULT_BACKEND_URI}/api/list/${TabItems[selectedTab]}`)
   .then(res => res.json())
   .then(res => res)
   .catch(() => [])

@@ -1,0 +1,1 @@
+export const DEFAULT_BACKEND_URI = 'http://localhost:5001'

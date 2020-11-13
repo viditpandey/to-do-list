@@ -4,9 +4,10 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import { DEFAULT_BACKEND_URI } from '../constants/constants'
 
 const removeListItems = (item={}) => {
-  return fetch(`/api/list/${item.listId}`, {
+  return fetch(`${DEFAULT_BACKEND_URI}/api/list/${item.listId}`, {
     headers: { 'Content-Type': 'application/json' },
     method: 'DELETE',
     body: JSON.stringify(item)

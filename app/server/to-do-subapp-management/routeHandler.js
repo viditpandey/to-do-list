@@ -10,7 +10,7 @@ const RouteHandler = {
         console.log(`reading for list ${req.params.listId}`)
         const db = dbConfig.getClient()
         const listItems = []
-        var cursor = db.collection('to-do-list').find({listId: req.params.listId});
+        var cursor = db.collection('to-do-list').find({listId: req.params.listId.toLowerCase()});
         cursor.forEach(function(data, error){
             if (error) res.status(501).json({ data: [] })
             else listItems.push(data)
@@ -34,7 +34,7 @@ const RouteHandler = {
 
     removeListItems: (req, res, next) => {
         const db = dbConfig.getClient()
-        console.log(`deleting item from list ${req.params.listId}`)
+        console.log(`deleting item from list ${req.params.listId.toLowerCase()}`)
         const deletedItem = {
             // listId: req.body.listId,
             // text: req.body.text,
