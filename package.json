@@ -14,7 +14,7 @@
     "build-client": "webpack --mode development --watch",
     "client": "webpack-dev-server --open",
     "server": "nodemon server.js",
-    "start": "webpack --mode production && nodemon server.js"
+    "start": "npm i && nodemon server.js"
   },
   "author": "",
   "license": "ISC",
