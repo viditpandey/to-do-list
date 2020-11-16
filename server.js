@@ -74,7 +74,7 @@ app.use(`/api/`, toDoListRoutes)
 //     res.redirect('/login')
 //   })
 
-const port = 5001
+const port = process.env.port || 5001
 
 app.listen(port, () => {
   console.log(`server started on port: ${port}`)
