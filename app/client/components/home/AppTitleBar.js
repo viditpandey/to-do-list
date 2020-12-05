@@ -26,7 +26,7 @@ function AppTitleBar (props) {
             <MenuIcon />
           </IconButton>
           <div className={classes.flex}>TO-DO's</div>
-          <Button onClick={() => { window.location = '/logout' }} color='inherit'>Logout</Button>
+          {/* <Button onClick={() => { window.location = '/logout' }} color='inherit'>Logout</Button> */}
         </Toolbar>
       </AppBar>
     </div>
